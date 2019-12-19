@@ -1,0 +1,13 @@
+init:
+//profile page redirects to current user
+//make links on userpage work
+//make posts section on profile look pretty
+
+0.02:
+//fix the 'no url yet' on the users page
+//add the app.blade.php internal style to an external css file
+//style the page for the single post
+
+
+
+

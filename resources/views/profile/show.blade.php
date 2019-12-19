@@ -19,7 +19,13 @@
             </div>
             <div class="pt-3"><strong>{{$user->name}}</strong></div>
             <div class="">{{$user->profile->description ?? 'No Description Yet'}}</div>
-            <div><a href="{{$user->profile->url ?? '#'}}">{{$user->profile->url ?? 'No Url Yet'}}</a></div>
+            @isset($user->profile->url)
+              <div><a href="{{$user->profile->url}}">{{$user->profile->url}}</a></div>
+            @endisset
+            @empty($user->profile->url)
+              <div><p>No link yet</p></div>
+            @endempty
+
         </div>
 
         <div class="posts-display">

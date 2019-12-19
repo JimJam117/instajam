@@ -3,5 +3,4 @@
 
 ## My first laravel project
 
-Instajam, my first laravel test project. This project is based upon the tutorial on freecodecamp:
-https://www.youtube.com/watch?v=ImtZ5yENzgE
+Instajam, my first laravel test project. This project is based upon the course on freecodecamp.
