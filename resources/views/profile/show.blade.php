@@ -11,9 +11,11 @@
             <div class="pt-5 d-flex justify-content-between align-items-baseline">
                 <h2>{{$user->username}}</h2> <a href="/post/create">Add New Post</a>
             </div>
-
+            <div class="pt-5 d-flex justify-content-between align-items-baseline">
+               <a href="/profile/{{$user->username}}/edit">Edit Profile</a>
+            </div>
             <div>
-                <strong>13</strong> Posts
+                <strong>{{$user->posts()->count()}}</strong> Posts
                 <strong>13</strong> Followers
                 <strong>13</strong> Following
             </div>

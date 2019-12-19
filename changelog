@@ -9,5 +9,8 @@ init:
 //style the page for the single post
 
 
-
+0.03:
+// 'update profile page' now working
+// Added basic profile policy
+// added frontend 'edit profile' link
 

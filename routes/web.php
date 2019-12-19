@@ -20,6 +20,8 @@ Auth::routes();
 
 Route::get('/profile', 'ProfileController@show');
 Route::get('/profile/{user}', 'ProfileController@show');
+Route::get('/profile/{user}/edit', 'ProfileController@edit');
+Route::put('/profile/{user}', 'ProfileController@update');
 
 Route::get('/post/create', 'PostController@create')->middleware('auth');
 Route::get('/post/{id}', 'PostController@show');
