@@ -40,14 +40,36 @@ class ProfileController extends Controller
       $user = User::where('username', $user)->firstOrFail();
       $this->authorize('update', $user->profile);
 
+      // validate data
       $data = request()->validate([
         'description' => '',
         'url' => 'url',
+        'image' => 'image'
 
       ]);
 
-      // pass validated data to the auth'd user's profile
-      auth()->user()->profile()->update($data);
+      // if the request contains an image, sort out paths
+      if (request('image')) {
+        $imgPath = request('image')->store('profile', 'public');
+
+        // adds the storage dir to the front of the path
+        $imgPathWithStorage = '/storage/' . $imgPath;
+
+        // pass the validated data to the auth'd user's profile, with thw image path as image
+        auth()->user()->profile()->update([
+            'description' => $data['description'],
+            'url' => $data['url'],
+            'image' => $imgPathWithStorage,
+        ]);
+      }
+
+      else{
+        // pass validated data to the auth'd user's profile
+        auth()->user()->profile()->update($data);
+      }
+
+
+
 
       return redirect("profile/{$user->username}");
 

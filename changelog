@@ -14,3 +14,37 @@ init:
 // Added basic profile policy
 // added frontend 'edit profile' link
 
+0.04:
+// added profile pictures
+// added profile picture to post
+// minor fixes here and there
+
+
+
+
+
+
+
+
+## TODO ##
+
+Make these pages look nicer:
+	post single
+	upload post page
+	edit profile page
+
+
+Concepts to maybe add after main project is finished:
+	
+	ability to clear url
+
+	likes(hearts) for posts
+		likes(hearts) count per profile
+		each post has heart count and links to who hearted the post
+
+	edit post
+
+	delete post	
+	
+
+	

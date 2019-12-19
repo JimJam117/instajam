@@ -9,7 +9,7 @@
         <h1>Edit Profile</h1>
       </div>
 
-      <!--Name-->
+      <!--Desc-->
       <div class=" form-group row">
           <label for="description" class="col-form-label">Description</label>
           <div class="col-md-6">
@@ -23,11 +23,11 @@
           </div>
       </div>
 
-      <!--Username-->
+      <!--Url-->
       <div class=" form-group row">
           <label for="url" class="col-form-label">Url</label>
           <div class="col-md-6">
-              <input id="url" type="url" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') ?? $user->profile->url ?? "" }}" required autocomplete="url">
+              <input id="url" type="url" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') ?? $user->profile->url ?? "" }}" autocomplete="url">
 
               @error('url')
               <span class="invalid-feedback" role="alert">
@@ -40,17 +40,17 @@
 
 
 
-      <!-- Profile image upload
+      <!-- Profile image upload -->
       <div class="row form-group">
           <label for="image" class="col-form-label">Image</label>
           <div class="col-md-6">
-              <input type="file" class="form-control-file" id="image" name="image" required>
+              <input type="file" class="form-control-file" id="image" name="image">
               @error('image')
                   <strong>{{ $message }}</strong>
               @enderror
           </div>
 
-      </div>-->
+      </div>
 
       <div class="form-group row">
         <button class="btn btn-primary" type="submit" name="button">Save Changes</button>
