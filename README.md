@@ -1,4 +1,4 @@
-<p align="center"><img src="https://www.svgpngicons.com/jpg/jam-eps.jpg" width="400"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/JimJam117/instajam/master/public/ico/jam.ico" width="400"></p>
 
 ## Instajam
 
