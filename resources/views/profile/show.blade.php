@@ -13,6 +13,17 @@
                 @can('update', $user->profile)
                 <a href="/post/create">Add New Post</a>
                 @endcan
+
+                <!--if user is auth'd then show button, as long as the auth'd user id isn't the same as this user's id-->
+                <!--also show if the user isn't auth'd-->
+                @if (Auth::User())
+                  @if (Auth::User()->id != $user->id)
+                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                  @endif
+                @else
+                  <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                @endif
+
             </div>
             @can('update', $user->profile)
             <div class="pt-2 d-flex justify-content-between align-items-baseline">
@@ -21,8 +32,8 @@
             @endcan
             <div>
                 <strong>{{$user->posts()->count()}}</strong> Posts
-                <strong>13</strong> Followers
-                <strong>13</strong> Following
+                <strong>{{$user->profile->followers()->count()}}</strong> Followers
+                <strong>{{$user->following()->count()}}</strong> Following
             </div>
             <div class="pt-3"><strong>{{$user->name}}</strong></div>
             <div class="">{{$user->profile->description ?? 'No Description Yet'}}</div>

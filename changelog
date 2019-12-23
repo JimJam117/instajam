@@ -19,7 +19,11 @@ init:
 // added profile picture to post
 // minor fixes here and there
 
-
+0.05:
+// added follow button that automatically updates with the page with Vue
+// added the profile_user pivot table
+// added the ability to follow other users
+// Make the followers/following values on the profile page correct
 
 
 
@@ -28,6 +32,16 @@ init:
 
 ## TODO ##
 
+Add pages:
+
+
+	list of Followers
+	list of following
+	list of all users
+	list of all posts
+	list of all posts of users you are following
+
+
 Make these pages look nicer:
 	post single
 	upload post page
@@ -35,7 +49,7 @@ Make these pages look nicer:
 
 
 Concepts to maybe add after main project is finished:
-	
+
 	ability to clear url
 
 	likes(hearts) for posts
@@ -44,7 +58,4 @@ Concepts to maybe add after main project is finished:
 
 	edit post
 
-	delete post	
-	
-
-	
+	delete post

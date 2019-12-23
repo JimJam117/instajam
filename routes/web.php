@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::post('follow/{user}', 'FollowController@store');
+
 Route::get('/profile', 'ProfileController@show');
 Route::get('/profile/{user}', 'ProfileController@show');
 Route::get('/profile/{user}/edit', 'ProfileController@edit');
