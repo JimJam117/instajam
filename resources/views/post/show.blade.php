@@ -17,8 +17,10 @@
 
                     <h3>{{$post->user->username}}</h3>
                 </a>
-              
-                <a href="#"><h3>Follow</h3></a>
+
+                <a href="#">
+                    <h3>Follow</h3>
+                </a>
             </div>
 
 
@@ -26,8 +28,7 @@
                 <h3>{{$post->title}}</h3>
             </div>
             <div class="row" style="">
-                <p>This is a placeholder discription: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores sit blanditiis aliquam nostrum molestias ipsa quidem, ea minus. Tempora dignissimos molestiae numquam ipsum quia, magni libero
-                    unde exercitationem deleniti, odio alias. Saepe nesciunt perferendis rerum a corporis maiores ratione quo amet consequatur placeat sequi incidunt ipsa, sit qui, veniam mollitia?</p>
+              {{$post->description}}
             </div>
             <div class="row" style="">
                 <em>This post was created at: {{$post->created_at}}</em>

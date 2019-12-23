@@ -34,18 +34,32 @@ init:
 
 Add pages:
 
+	0.06:
+		//list of all users
+		// list of Followers
+		// list of following
+		// list of all posts
+		// add descriptions to posts
+		// list of all posts of users you are following (home page)
 
-	list of Followers
-	list of following
-	list of all users
-	list of all posts
-	list of all posts of users you are following
+		//follow links on profile page
 
 
-Make these pages look nicer:
-	post single
-	upload post page
-	edit profile page
+	0.07:
+			Make these pages look nicer:
+
+				list of Followers / following / all users
+
+				list of all posts / users posts
+
+				upload post page
+
+				edit profile page
+
+				post single
+
+
+
 
 
 Concepts to maybe add after main project is finished:

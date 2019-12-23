@@ -7,6 +7,13 @@ use \App\User;
 
 class ProfileController extends Controller
 {
+    public function index() {
+
+      $users = User::all();
+      return view('profile.index', compact('users'));
+
+    }
+
     public function show($user = null)
     {
         // if the user is null then check if the user is logged in, if so go to their profile
@@ -73,9 +80,52 @@ class ProfileController extends Controller
             auth()->user()->profile()->update($data);
         }
 
-
-
-
         return redirect("profile/{$user->username}");
     }
+
+
+    public function followers($user = null)
+    {
+      // if the user is auth'd and no user is provided, use auth'd user
+      if (auth()->user() && $user == null) {
+        $user = auth()->user()->username;
+        $user = User::where('username', $user)->firstOrFail();
+      }
+      // if the user is null, just go to all profiles
+      else if($user == null) {
+        return redirect("/profiles");
+      }
+      // else, use the username to find the user
+      else{
+        $user = User::where('username', $user)->firstOrFail();
+      }
+
+      //return "Followers for ".  $user->username . " = " . $user->profile->followers()->count();
+      return view('profile.followers', compact('user'));
+    }
+
+    public function following($user = null) {
+
+      // if the user is auth'd and no user is provided, use auth'd user
+      if (auth()->user() && $user == null) {
+        $user = auth()->user()->username;
+        $user = User::where('username', $user)->firstOrFail();
+      }
+      // if the user is null, just go to all profiles
+      else if($user == null) {
+        return redirect("/profiles");
+      }
+      // else, use the username to find the user
+      else{
+        $user = User::where('username', $user)->firstOrFail();
+      }
+
+      return view('profile.following', compact('user'));
+      //return $user->username . " is following = " . $user->following()->count();
+    }
+
+
+
+
+
 }

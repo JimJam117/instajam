@@ -23,6 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = auth()->user();
+
+        $posts = [];
+        foreach ($user->following as $following) {
+          foreach($following->user->posts as $post){
+            $posts[] = $post;
+          }
+        }
+
+        return view('home.index', compact('user', 'posts'));
     }
 }

@@ -22,6 +22,21 @@
             </div>
         </div>
 
+        <div class=" form-group row">
+
+            <label for="description" class="col-form-label">Description</label>
+
+            <div class="col-md-6">
+                <input id="description" type="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" required autocomplete="description">
+
+                @error('description')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+                @enderror
+            </div>
+        </div>
+
         <div class="row form-group">
             <label for="image" class="col-form-label">Image</label>
             <div class="col-md-6">

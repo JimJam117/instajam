@@ -16,6 +16,7 @@ class PostController extends Controller
       // data to validate
       $data = request()->validate([
           'title' => 'required',
+          'description' => 'required',
           'image' => 'required|image',
 
       ]);
@@ -29,6 +30,7 @@ class PostController extends Controller
       // uses validated $data var items and also the image path
       auth()->user()->posts()->create([
         'title' => $data['title'],
+        'description' => $data['description'],
         'image' => $imgPathWithStorage,
       ]);
 
@@ -43,4 +45,29 @@ class PostController extends Controller
 
       return view('post.show', compact('post'));
     }
+
+    public function index($user = null)
+    {
+      // if auth'd user exists and no user is provided
+      if (auth()->user() && $user == null) {
+        $user = auth()->user();
+      }
+      // if there is no auth'd user or provided user, show all
+      else if ($user == null) {
+        $this.all();
+      }
+      else {
+        $user = \App\User::where('username', $user)->firstOrFail();
+      }
+
+      return view('post.index', compact('user'));
+    }
+
+    public function all()
+    {
+      $posts = \App\Post::all();
+      return view('post.all', compact('posts'));
+    }
+
+
 }

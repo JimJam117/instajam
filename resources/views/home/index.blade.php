@@ -31,17 +31,9 @@
             </div>
             @endcan
             <div>
-                <a href="/posts/{{$user->username}}" class="text-dark">
-                  <strong>{{$user->posts()->count()}}</strong> Posts
-                </a>
-                |
-                <a href="/{{$user->username}}/followers" class="text-dark">
-                  <strong>{{$user->profile->followers()->count()}}</strong> Followers
-                </a>
-                |
-                <a href="/{{$user->username}}/following" class="text-dark">
-                  <strong>{{$user->following()->count()}}</strong> Following
-                </a>
+                <strong>{{$user->posts()->count()}}</strong> Posts
+                <strong>{{$user->profile->followers()->count()}}</strong> Followers
+                <strong>{{$user->following()->count()}}</strong> Following
             </div>
             <div class="pt-3"><strong>{{$user->name}}</strong></div>
             <div class="">{{$user->profile->description ?? 'No Description Yet'}}</div>
@@ -55,10 +47,11 @@
                     @endempty
 
         </div>
-
+        <hr>
+        <hr>
         <div class="posts-display">
 
-            @foreach($user->posts as $post)
+            @foreach($posts as $post)
                 <a href="/post/{{$post->id}}" class="post-display" style="text-decoration: none; background-image: url({{$post->image}});">
                     <div class="post-display-filter">
                         <h2>{{$post->title}}</h2>
