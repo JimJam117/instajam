@@ -25,51 +25,50 @@ init:
 // added the ability to follow other users
 // Make the followers/following values on the profile page correct
 
+0.06:
+// list of all users
+// list of Followers
+// list of following
+// list of all posts
+// add descriptions to posts
+// list of all posts of users you are following (home page)
+// follow links on profile page
 
+0.07:
+// Make these pages look nicer + responsive:
+// welcome page
+// post single
+// upload post page
+// edit profile page
+// list of Followers
+// following
+// all users
+// 	have a link on home page to view all users
 
 
 
 
 ## TODO ##
 
-Add pages:
+0.08:
+		modify post
+		fix follow button on the post single page
 
-	0.06:
-		//list of all users
-		// list of Followers
-		// list of following
-		// list of all posts
-		// add descriptions to posts
-		// list of all posts of users you are following (home page)
+0.09:
+		delete post
 
-		//follow links on profile page
+0.10:
+		ability to clear url
 
-
-	0.07:
-			Make these pages look nicer:
-
-				list of Followers / following / all users
-
-				list of all posts / users posts
-
-				upload post page
-
-				edit profile page
-
-				post single
+0.11:
+likes(hearts) for posts
+	likes(hearts) count per profile
+	each post has heart count and links to who hearted the post
 
 
+	0.0x:
+		caching
 
+		pagination
 
-
-Concepts to maybe add after main project is finished:
-
-	ability to clear url
-
-	likes(hearts) for posts
-		likes(hearts) count per profile
-		each post has heart count and links to who hearted the post
-
-	edit post
-
-	delete post
+		sending emails

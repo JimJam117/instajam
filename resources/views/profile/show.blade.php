@@ -4,11 +4,11 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-3">
-            <img src="{{$user->profile->returnImage()}}" alt="jam" class="rounded-circle p-5" style="height: 20em; width: 20em;">
+        <div class="d-flex col-3 home-col">
+            <img src="{{$user->profile->returnImage()}}" alt="jam" class="rounded-circle profile-img">
         </div>
-        <div class="col-9">
-            <div class="pt-5 d-flex justify-content-between align-items-baseline">
+        <div class="col-9 home-col">
+            <div class="profile-details pt-5 d-flex justify-content-between align-items-baseline">
                 <h2>{{$user->username}}</h2>
                 @can('update', $user->profile)
                 <a href="/post/create">Add New Post</a>
@@ -17,11 +17,11 @@
                 <!--if user is auth'd then show button, as long as the auth'd user id isn't the same as this user's id-->
                 <!--also show if the user isn't auth'd-->
                 @if (Auth::User())
-                  @if (Auth::User()->id != $user->id)
-                    <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
-                  @endif
+                @if (Auth::User()->id != $user->id)
+                <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                @endif
                 @else
-                  <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
+                <follow-button user-id="{{ $user->id }}" follows="{{ $follows }}"></follow-button>
                 @endif
 
             </div>
@@ -31,16 +31,16 @@
             </div>
             @endcan
             <div>
-                <a href="/posts/{{$user->username}}" class="text-dark">
-                  <strong>{{$user->posts()->count()}}</strong> Posts
-                </a>
+
+                <strong>{{$user->posts()->count()}}</strong> Posts
+
                 |
                 <a href="/{{$user->username}}/followers" class="text-dark">
-                  <strong>{{$user->profile->followers()->count()}}</strong> Followers
+                    <strong>{{$user->profile->followers()->count()}}</strong> Followers
                 </a>
                 |
                 <a href="/{{$user->username}}/following" class="text-dark">
-                  <strong>{{$user->following()->count()}}</strong> Following
+                    <strong>{{$user->following()->count()}}</strong> Following
                 </a>
             </div>
             <div class="pt-3"><strong>{{$user->name}}</strong></div>
@@ -52,21 +52,26 @@
                     <div>
                         <p>No link yet</p>
                     </div>
-                    @endempty
+                @endempty
 
         </div>
 
-        <div class="posts-display">
 
-            @foreach($user->posts as $post)
-                <a href="/post/{{$post->id}}" class="post-display" style="text-decoration: none; background-image: url({{$post->image}});">
-                    <div class="post-display-filter">
-                        <h2>{{$post->title}}</h2>
-                    </div>
-                </a>
-                @endforeach
-
-        </div>
     </div>
+    <hr>
+
+
+</div>
+
+<div class="posts-display">
+
+    @foreach($user->posts as $post)
+        <a href="/post/{{$post->id}}" class="post-display" style="text-decoration: none; background-image: url({{$post->image}});">
+            <div class="post-display-filter">
+                <h2>{{$post->title}}</h2>
+            </div>
+        </a>
+        @endforeach
+
 </div>
 @endsection

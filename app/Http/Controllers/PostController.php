@@ -46,6 +46,7 @@ class PostController extends Controller
       return view('post.show', compact('post'));
     }
 
+    /*
     public function index($user = null)
     {
       // if auth'd user exists and no user is provided
@@ -60,8 +61,9 @@ class PostController extends Controller
         $user = \App\User::where('username', $user)->firstOrFail();
       }
 
-      return view('post.index', compact('user'));
+      return redirect("/profile/$user->username");
     }
+    */
 
     public function all()
     {

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    @yield('title')
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,6 +19,124 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .profile-link {
+            display: flex;
+            transition: 0.2s;
+            color: #212529;
+            padding: 1em;
+            overflow: hidden;
+        }
+
+        .profile-link:hover {
+            text-decoration: none;
+            background-color: #3490dc;
+            color: #fff;
+        }
+
+
+
+        .profile-link img,
+        .profile-img {
+            border-radius: 100%;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            margin: auto;
+        }
+
+
+        .posts-display {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+            grid-auto-rows: 33vw;
+            width: 100%;
+        }
+
+        .post-display {
+            margin: 1em;
+            background: #dddddd;
+            background-position-x: 0%;
+            background-position-y: 0%;
+            background-repeat: repeat;
+            background-image: none;
+            background-size: auto;
+            overflow: hidden;
+            border-radius: 0;
+            box-shadow: 0 7px 5px 1px grey;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            transition: 0.2s;
+        }
+
+        .post-display-filter{
+          width: 100%;
+          height: 100%;
+          transition: 0.2s;
+          text-align: center;
+        }
+        .post-display-filter h2{
+          opacity: 0;
+          padding-top: 1em;
+          color: #eee;
+        }
+        .post-display-filter:hover{
+          background-color: #00000050;
+
+        }
+        .post-display-filter:hover *{
+          opacity: 1;
+        }
+
+
+        /*Breakpoints*/
+
+        @media screen and (max-width: 1200px) {
+
+        }
+
+
+        @media screen and (max-width: 992px) {
+
+            .posts-display{
+              grid-template-columns: 50% 50%;
+              grid-auto-rows: 50vw;
+            }
+        }
+
+
+        @media screen and (max-width: 768px) {
+
+        }
+
+
+        @media screen and (max-width: 576px) {
+
+
+            .home-col {
+                -webkit-box-flex: 0;
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .profile-details{
+              margin: 1em 0;
+              flex-direction: column;
+            }
+            .profile-img{
+              width: 50%;
+            }
+            .profile-link-img-container{
+              display: none;
+            }
+
+            .posts-display{
+              grid-template-columns: 100%;
+              grid-auto-rows: 100vw;
+            }
+        }
+    </style>
 
 </head>
 

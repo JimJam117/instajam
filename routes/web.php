@@ -36,9 +36,9 @@ Route::get('/profile/{user}', 'ProfileController@show');
 Route::get('/profile/{user}/edit', 'ProfileController@edit')->middleware('auth');
 Route::put('/profile/{user}', 'ProfileController@update')->middleware('auth');
 
-Route::get('/posts', 'PostController@index');
+Route::get('/posts', 'PostController@all');
 Route::get('/posts/all', 'PostController@all');
-Route::get('/posts/{user}', 'PostController@index');
+//Route::get('/posts/{user}', 'PostController@index');
 
 Route::get('/post/create', 'PostController@create')->middleware('auth');
 Route::get('/post/{id}', 'PostController@show');

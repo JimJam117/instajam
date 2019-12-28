@@ -4,14 +4,32 @@
 
 <div class="container">
 
-  <h1>{{$user->username}}'s following: {{$user->following->count()}}</h1>
+    <h1>Who {{$user->username}} is following | <small>{{$user->following->count()}}</small></h1>
 
-  @foreach ($user->following as $follower)
-      <a href="/profile/{{$follower->user->username}}">
-        <h2>{{$follower->user->username}}</h2>
-        <img src="{{$follower->returnImage()}}" alt="">
-      </a>
-  @endforeach
+    @if($user->following->count() < 1) <p>No one's here :(</p>
+            @endif
+
+
+            @foreach ($user->following as $follower)
+            <hr>
+            <a class="profile-link row d-flex" href="/profile/{{$follower->user->username}}">
+
+                <div class="profile-link-img-container col-3">
+                    <img src="{{$follower->returnImage()}}" alt="{{$follower->user->username}}">
+
+                </div>
+
+                <div class="col-9 ">
+                    <h2>{{$follower->user->username}}</h2>
+                    <p>{{$follower->description}}</p>
+                </div>
+
+            </a>
+
+            @endforeach
+
+
+
 
 </div>
 

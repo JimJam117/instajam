@@ -2,20 +2,34 @@
 
 @section('content')
 
-<div class="container">
 
   @if($posts->count() < 1)
     <p>No posts :(</p>
   @endif
 
-  @foreach ($posts as $post)
-    <hr>
-    <h2>{{$post->title}}</h2>
-    By: <a href="/profile/{{$post->user->username}}">{{$post->user->username}}</a>
-    <p>{{$post->description}}</p>
-    <img style="width:100px;" src="{{$post->image}}" alt="{{$post->title}}">
-  @endforeach
+    <div class="d-flex flex-column">
 
-</div>
+          <div class="d-flex flex-column align-items-center text-center border-right border-grey home-col ">
+
+                  <h2>All Posts</h2>
+
+          </div>
+
+            <div class="home-col">
+            <div class="posts-display">
+                @foreach($posts as $post)
+                <a href="/post/{{$post->id}}" class="post-display" style="text-decoration: none; background-image: url({{$post->image}});">
+                    <div class="post-display-filter">
+                        <h2>{{$post->title}}</h2>
+                    </div>
+                </a>
+                @endforeach
+        </div>
+      </div>
+
+
+
+
+    </div>
 
 @endsection

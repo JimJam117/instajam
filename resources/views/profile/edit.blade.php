@@ -2,61 +2,73 @@
 
 @section('content')
 <div class="container">
-  <form action="/profile/{{$user->username}}" enctype="multipart/form-data" class="col-9 offset-2" method="post">
-    @csrf
-    @method('PUT')
-      <div class="row">
-        <h1>Edit Profile</h1>
-      </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Edit Profile</div>
 
-      <!--Desc-->
-      <div class=" form-group row">
-          <label for="description" class="col-form-label">Description</label>
-          <div class="col-md-6">
-              <input id="description" type="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') ?? $user->profile->description ?? ""}}" required autocomplete="description">
+                <div class="card-body">
 
-              @error('description')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-          </div>
-      </div>
+                    <form action="/profile/{{$user->username}}" enctype="multipart/form-data" method="post">
+                        @csrf
+                        @method('PUT')
 
-      <!--Url-->
-      <div class=" form-group row">
-          <label for="url" class="col-form-label">Url</label>
-          <div class="col-md-6">
-              <input id="url" type="url" class="form-control @error('url') is-invalid @enderror" name="url" value="{{ old('url') ?? $user->profile->url ?? "" }}" autocomplete="url">
+                        <div class=" form-group row">
 
-              @error('url')
-              <span class="invalid-feedback" role="alert">
-                  <strong>{{ $message }}</strong>
-              </span>
-              @enderror
-          </div>
-      </div>
+                            <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
+
+                            <div class="col-md-6">
+                                <input id="description" type="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') ?? $user->profile->description ?? ""}}" required min="1" max="200">
+
+                                @error('description')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
 
 
+                        <div class="form-group row">
+
+                            <label for="url" class="col-md-4 col-form-label text-md-right">Url</label>
+
+                            <div class="col-md-6">
+                                <input id="url" type="url" class="form-control @error('url') is-invalid @enderror" name="url"  value="{{ old('url') ?? $user->profile->url ?? "" }}" required autocomplete="url">
+
+                                @error('url')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <!-- Profile image upload -->
+                        <div class="row form-group">
+                            <label for="image" class="col-form-label col-md-4 col-form-label text-md-right">Image</label>
+                            <div class="col-md-6">
+                                <input type="file" class="form-control-file" id="image" name="image">
+                                @error('image')
+                                    <strong>{{ $message }}</strong>
+                                @enderror
+                            </div>
+
+                        </div>
 
 
-      <!-- Profile image upload -->
-      <div class="row form-group">
-          <label for="image" class="col-form-label">Image</label>
-          <div class="col-md-6">
-              <input type="file" class="form-control-file" id="image" name="image">
-              @error('image')
-                  <strong>{{ $message }}</strong>
-              @enderror
-          </div>
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
 
-      </div>
+                            <button class="btn btn-primary text-center align-items-center" type="submit" name="button">Save Changes</button>
+                        </div>
+                        </div>
+                    </form>
 
-      <div class="form-group row">
-        <button class="btn btn-primary" type="submit" name="button">Save Changes</button>
-      </div>
-  </form>
-
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 @endsection

@@ -4,12 +4,12 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-6 p-5">
+        <div class="col-6 p-5 home-col">
             <div class="img_container" style="background-image: url({{$post->image}});"></div>
             <img class="w-100" src="{{$post->image}}" alt="" style="background-color:#ddd;">
         </div>
 
-        <div class="col-6 pt-5 pr-5 pl-5" style="">
+        <div class="col-6 pt-5 pr-5 pl-5 home-col" style="">
             <div class="row justify-content-between align-items-center">
                 <a class="d-flex align-items-center" href="/profile/{{$post->user->username}}">
 
