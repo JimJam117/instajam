@@ -45,20 +45,17 @@ init:
 // all users
 // 	have a link on home page to view all users
 
+0.08:
+// modify post
+// delete post
+// fix follow button on the post single page
+// add edit button
+// add delete button
+// ability to clear url
 
 
 
 ## TODO ##
-
-0.08:
-		modify post
-		fix follow button on the post single page
-
-0.09:
-		delete post
-
-0.10:
-		ability to clear url
 
 0.11:
 likes(hearts) for posts

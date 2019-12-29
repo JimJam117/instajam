@@ -18,9 +18,23 @@
                     <h3>{{$post->user->username}}</h3>
                 </a>
 
-                <a href="#">
-                    <h3>Follow</h3>
-                </a>
+                <!--if user is auth'd then show button, as long as the auth'd user id isn't the same as this user's id-->
+                <!--also show if the user isn't auth'd-->
+                @if (Auth::User())
+                @if (Auth::User()->id != $post->user->id)
+                <follow-button user-id="{{ $post->user->id }}" follows="{{ $follows }}"></follow-button>
+                @endif
+                @else
+                <follow-button user-id="{{ $post->user->id }}" follows="{{ $follows }}"></follow-button>
+                @endif
+
+
+                @if (Auth::User())
+                @if (Auth::User()->id == $post->user->id)
+                  <a class="btn btn-primary" href="/post/{{$post->id}}/edit">Edit</a>
+                  <a class="btn btn-danger" href="/post/{{$post->id}}/delete">Delete</a>
+                @endif
+                @endif
             </div>
 
 

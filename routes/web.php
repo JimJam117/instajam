@@ -38,6 +38,10 @@ Route::put('/profile/{user}', 'ProfileController@update')->middleware('auth');
 
 Route::get('/posts', 'PostController@all');
 Route::get('/posts/all', 'PostController@all');
+Route::get('/post/{id}/edit', 'PostController@edit')->middleware('auth');
+Route::put('/post/{id}', 'PostController@update')->middleware('auth');
+Route::delete('/post/{id}', 'PostController@destroy')->middleware('auth');
+Route::get('/post/{id}/delete', 'PostController@delete')->middleware('auth');
 //Route::get('/posts/{user}', 'PostController@index');
 
 Route::get('/post/create', 'PostController@create')->middleware('auth');

@@ -43,7 +43,16 @@ class PostController extends Controller
 
       $post = \App\Post::where('id', $id)->firstOrFail();
 
-      return view('post.show', compact('post'));
+      // determines if the auth'd user is following this post's profile
+      $follows = null;
+      if (auth()->user() && auth()->user()->following->contains($post->user->profile)) {
+          $follows = true;
+      } else {
+          $follows = false;
+      }
+
+
+      return view('post.show', compact('post', 'follows'));
     }
 
     /*
@@ -52,7 +61,7 @@ class PostController extends Controller
       // if auth'd user exists and no user is provided
       if (auth()->user() && $user == null) {
         $user = auth()->user();
-      }
+      }profile
       // if there is no auth'd user or provided user, show all
       else if ($user == null) {
         $this.all();
@@ -69,6 +78,75 @@ class PostController extends Controller
     {
       $posts = \App\Post::all();
       return view('post.all', compact('posts'));
+    }
+
+
+
+
+    public function edit($post)
+    {
+
+      // get user and authorize
+        $post = \App\Post::where('id', $post)->firstOrFail();
+        $this->authorize('update', $post);
+
+        return view('post.edit', compact('post'));
+    }
+
+    public function update($post)
+    {
+
+      // get user and authorize
+        $post = \App\Post::where('id', $post)->firstOrFail();
+          $this->authorize('update', $post);
+
+        // validate data
+        $data = request()->validate([
+        'description' => 'min:1|max:400',
+        'title' => 'min:1|max:100',
+        'image' => 'image'
+
+      ]);
+
+        // if the request contains an image, sort out paths
+        if (request('image')) {
+            $imgPath = request('image')->store('uploads', 'public');
+
+            // adds the storage dir to the front of the path
+            $imgPathWithStorage = '/storage/' . $imgPath;
+
+            // pass the validated data to the auth'd user's profile, with thw image path as image
+            $post->update([
+            'description' => $data['description'],
+            'title' => $data['title'],
+            'image' => $imgPathWithStorage,
+        ]);
+        } else {
+            // pass validated data to the auth'd user's profile
+            $post->update($data);
+        }
+
+        return redirect("post/{$post->id}");
+    }
+
+    public function destroy($post)
+    {
+      $post = \App\Post::where('id', $post)->firstOrFail();
+      $this->authorize('delete', $post);
+
+      \App\Post::where('id', $post->id)->delete();
+
+
+      return redirect("/home");
+    }
+
+    public function delete($post)
+    {
+
+      $post = \App\Post::where('id', $post)->firstOrFail();
+      $this->authorize('delete', $post);
+
+      return view("confirm-delete", compact('post'));
     }
 
 

@@ -57,7 +57,7 @@ class ProfileController extends Controller
         // validate data
         $data = request()->validate([
         'description' => 'min:1|max:200',
-        'url' => 'url',
+        'url' => 'nullable|url',
         'image' => 'image'
 
       ]);

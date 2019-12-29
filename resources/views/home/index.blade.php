@@ -11,8 +11,8 @@
               <a href="/profile" class="text-dark">
                   <h2>{{$user->username}}</h2>
               </a>
-              <a href="/post/create">New Post</a>
-              <a href="/following">Following</a>
+              <a class="btn btn-secondary" style="margin: 0.5em 0 ;" href="/post/create">New Post</a>
+              <a class="btn btn-secondary" style="margin: 0.5em 0 ;" href="/profile">My Profile</a>
 
           </div>
 

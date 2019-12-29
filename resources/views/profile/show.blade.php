@@ -11,7 +11,7 @@
             <div class="profile-details pt-5 d-flex justify-content-between align-items-baseline">
                 <h2>{{$user->username}}</h2>
                 @can('update', $user->profile)
-                <a href="/post/create">Add New Post</a>
+                <a class="btn btn-primary" href="/post/create">Add New Post</a>
                 @endcan
 
                 <!--if user is auth'd then show button, as long as the auth'd user id isn't the same as this user's id-->
@@ -27,7 +27,7 @@
             </div>
             @can('update', $user->profile)
             <div class="pt-2 d-flex justify-content-between align-items-baseline">
-                <a href="/profile/{{$user->username}}/edit">Edit Profile</a>
+                <a class="btn btn-primary" href="/profile/{{$user->username}}/edit">Edit Profile</a>
             </div>
             @endcan
             <div>
