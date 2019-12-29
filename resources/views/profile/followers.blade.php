@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "$user->username's Followers")
+
 @section('content')
 
 <div class="container">

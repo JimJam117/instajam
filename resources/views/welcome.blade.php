@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', "Welcome")
+
 @section('content')
 <div class="container">
 
@@ -21,7 +23,7 @@
           <button class="btn btn-success btn-lg btn-block" type="button" name="toProfilesPage" onclick="window.location.href = '/profiles';">
               <h3>All Users</h3>
           </button>
-        
+
 
 
             @if (Auth::guest())
