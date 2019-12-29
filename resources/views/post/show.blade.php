@@ -42,7 +42,7 @@
                 <h3>{{$post->title}}</h3>
             </div>
             <div class="row" style="">
-              {{$post->description}}
+              {!!$post->description!!}
             </div>
             <div class="row" style="">
                 <em>This post was created at: {{$post->created_at}}</em>

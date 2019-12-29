@@ -34,8 +34,8 @@
                             <label for="description" class="col-md-4 col-form-label text-md-right">Description</label>
 
                             <div class="col-md-6">
-                                <input id="description" type="description" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') ?? $post->description ?? ""}}" required
-                                min="1" max="200">
+
+                              <textarea name="description" rows="8" cols="80">{!! old('description', $post->description) !!}</textarea>
 
                                 @error('description')
                                 <span class="invalid-feedback" role="alert">

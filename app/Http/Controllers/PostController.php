@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Purifier;
 
 class PostController extends Controller
 {
@@ -30,7 +31,7 @@ class PostController extends Controller
       // uses validated $data var items and also the image path
       auth()->user()->posts()->create([
         'title' => $data['title'],
-        'description' => $data['description'],
+        'description' => Purifier::clean($data['description']),
         'image' => $imgPathWithStorage,
       ]);
 
@@ -117,7 +118,7 @@ class PostController extends Controller
 
             // pass the validated data to the auth'd user's profile, with thw image path as image
             $post->update([
-            'description' => $data['description'],
+            'description' => Purifier::clean($data['description']),
             'title' => $data['title'],
             'image' => $imgPathWithStorage,
         ]);
